@@ -7,17 +7,17 @@ import java.util.List;
 
 public class DataConverterImpl implements DataConverter {
     @Override
-    public List<FruitTransaction> convertToTransaction(List<String> reportToReadFruits) {
+    public List<FruitTransaction> convertToTransaction(List<String> readFile) {
         List<FruitTransaction> transactions =new ArrayList<>();
-        for (String report : reportToReadFruits) {
+        for (String report : readFile) {
             String[] reportSplit = report.split(",");
             String code = reportSplit[0];
             String fruit = reportSplit[1];
             int quantity = Integer.parseInt(reportSplit[2]);
             FruitTransaction.Operation operationCode = null;
-            for (FruitTransaction.Operation op : FruitTransaction.Operation.values()) {
-                if (op.getCode().equals(code)) {
-                    operationCode = op;
+            for (FruitTransaction.Operation operation : FruitTransaction.Operation.values()) {
+                if (operation.getCode().equals(code)) {
+                    operationCode = operation;
                     break;
                 }
             }

@@ -16,10 +16,10 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         ReadFile reportOfFile = new ReadFileImpl();
-        List<String> reportToReadFruits = reportOfFile.read("reportToRead.csv");
+        List<String> readFile = reportOfFile.read("reportToRead.csv");
 
         DataConverter dataConverter = new DataConverterImpl();
-        List<FruitTransaction> transactions = dataConverter.convertToTransaction(reportToReadFruits);
+        List<FruitTransaction> transactions = dataConverter.convertToTransaction(readFile);
 
         Map<FruitTransaction.Operation, OperationHandler> operationHandlers = new HashMap<>();
         operationHandlers.put(FruitTransaction.Operation.BALANCE, new BalanceOperation());
@@ -36,6 +36,5 @@ public class Main {
 
         FileWriter fileWriter = new FileWriterImpl();
         fileWriter.write(resultingReport, "finalReport.csv");
-
     }
 }
