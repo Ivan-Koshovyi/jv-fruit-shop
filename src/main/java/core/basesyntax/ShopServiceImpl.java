@@ -6,14 +6,14 @@ import java.util.Map;
 
 public class ShopServiceImpl implements ShopService {
 
-    private Map<String, Integer> storage = new HashMap<>();
+    private static Map<String, Integer> storage = new HashMap<>();
     private OperationStrategy operationStrategy;
 
     public ShopServiceImpl(OperationStrategy operationStrategy) {
         this.operationStrategy = operationStrategy;
     }
 
-    public Map<String, Integer> getStorage() {
+    public static Map<String, Integer> getStorage() {
         return storage;
     }
 
