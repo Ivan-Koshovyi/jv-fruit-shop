@@ -18,7 +18,7 @@ public class OperationStrategyImpl implements OperationStrategy {
         if (handler != null) {
             handler.handle(transaction, storage);
         } else {
-            throw new IllegalArgumentException("Невідома операція: " + transaction.getOperation());
+            throw new IllegalArgumentException("Unknown operation " + transaction.getOperation());
         }
     }
 }
