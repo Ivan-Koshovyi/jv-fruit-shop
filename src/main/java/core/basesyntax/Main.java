@@ -2,22 +2,22 @@ package core.basesyntax;
 
 import core.basesyntax.converter.DataConverter;
 import core.basesyntax.converter.DataConverterImpl;
-import core.basesyntax.file.FileWriter;
-import core.basesyntax.file.FileWriterImpl;
-import core.basesyntax.file.ReadFile;
-import core.basesyntax.file.ReadFileImpl;
-import core.basesyntax.operations.BalanceOperation;
-import core.basesyntax.operations.OperationHandler;
-import core.basesyntax.operations.OperationStrategy;
-import core.basesyntax.operations.OperationStrategyImpl;
-import core.basesyntax.operations.PurchaseOperation;
-import core.basesyntax.operations.ReturnOperation;
-import core.basesyntax.operations.SupplyOperation;
-import core.basesyntax.service.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.FileWriter;
+import core.basesyntax.service.ReadFile;
 import core.basesyntax.service.ReportGenerator;
-import core.basesyntax.service.ReportGeneratorImpl;
 import core.basesyntax.service.ShopService;
-import core.basesyntax.service.ShopServiceImpl;
+import core.basesyntax.service.impl.FileWriterImpl;
+import core.basesyntax.service.impl.ReadFileImpl;
+import core.basesyntax.service.impl.ReportGeneratorImpl;
+import core.basesyntax.service.impl.ShopServiceImpl;
+import core.basesyntax.strategy.OperationHandler;
+import core.basesyntax.strategy.OperationStrategy;
+import core.basesyntax.strategy.impl.BalanceOperation;
+import core.basesyntax.strategy.impl.OperationStrategyImpl;
+import core.basesyntax.strategy.impl.PurchaseOperation;
+import core.basesyntax.strategy.impl.ReturnOperation;
+import core.basesyntax.strategy.impl.SupplyOperation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,12 +37,12 @@ public class Main {
 
         List<FruitTransaction> transactions = dataConverter.convertToTransaction(readFile);
         ShopService shopService = new ShopServiceImpl(operationStrategy);
-        shopService.process(transactions);
+        Map<String, Integer> finalStorage = shopService.process(transactions);
 
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        String resultingReport = reportGenerator.getReport();
+        String resultingReport = reportGenerator.getReport(finalStorage);
 
         FileWriter fileWriter = new FileWriterImpl();
-        fileWriter.write(resultingReport, "finalReport.csv");
+        fileWriter.write(resultingReport, "src/main/resources/finalReport.csv");
     }
 }

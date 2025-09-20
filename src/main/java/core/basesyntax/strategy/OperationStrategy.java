@@ -1,6 +1,6 @@
-package core.basesyntax.operations;
+package core.basesyntax.strategy;
 
-import core.basesyntax.service.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
 import java.util.Map;
 
 public interface OperationStrategy {

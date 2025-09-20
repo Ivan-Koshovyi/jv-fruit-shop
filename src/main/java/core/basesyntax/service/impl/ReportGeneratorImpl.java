@@ -1,17 +1,17 @@
-package core.basesyntax.service;
+package core.basesyntax.service.impl;
 
+import core.basesyntax.service.ReportGenerator;
 import java.util.Map;
 
 public class ReportGeneratorImpl implements ReportGenerator {
     @Override
-    public String getReport() {
-        Map<String, Integer> storage = ShopServiceImpl.getStorage();
+    public String getReport(Map<String, Integer> fruitData) {
         StringBuilder reportBuilder = new StringBuilder();
         reportBuilder.append("fruit, quantity\n");
-        for (Map.Entry<String, Integer> string : storage.entrySet()) {
+        for (Map.Entry<String, Integer> string : fruitData.entrySet()) {
             reportBuilder
                     .append(string.getKey())
-                    .append(", ")
+                    .append(",")
                     .append(string.getValue())
                     .append("\n");
         }

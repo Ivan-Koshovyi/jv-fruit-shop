@@ -1,5 +1,6 @@
-package core.basesyntax.file;
+package core.basesyntax.service.impl;
 
+import core.basesyntax.service.ReadFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReadFileImpl implements ReadFile {
-
     @Override
     public List<String> read(String fileName) {
         try (InputStream inputStream = getClass().getResourceAsStream("/" + fileName)) {

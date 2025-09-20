@@ -1,10 +1,11 @@
-package core.basesyntax.operations;
+package core.basesyntax.strategy.impl;
 
-import core.basesyntax.service.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.strategy.OperationHandler;
+import core.basesyntax.strategy.OperationStrategy;
 import java.util.Map;
 
 public class OperationStrategyImpl implements OperationStrategy {
-
     private final Map<FruitTransaction.Operation, OperationHandler> operationHandlers;
 
     public OperationStrategyImpl(Map<FruitTransaction.Operation,
@@ -21,5 +22,6 @@ public class OperationStrategyImpl implements OperationStrategy {
             throw new IllegalArgumentException("Unknown operation "
                     + transaction.getOperation());
         }
+
     }
 }
