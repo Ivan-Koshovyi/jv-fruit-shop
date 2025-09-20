@@ -1,0 +1,24 @@
+package core.basesyntax;
+
+import core.basesyntax.operations.OperationHandler;
+
+import java.util.Map;
+
+public class OperationStrategyImpl implements OperationStrategy {
+
+    private final Map<FruitTransaction.Operation, OperationHandler> operationHandlers;
+
+    public OperationStrategyImpl(Map<FruitTransaction.Operation, OperationHandler> operationHandlers) {
+        this.operationHandlers = operationHandlers;
+    }
+
+    @Override
+    public void apply(FruitTransaction transaction, Map<String, Integer> storage) {
+        OperationHandler handler = operationHandlers.get(transaction.getOperation());
+        if (handler != null) {
+            handler.handle(transaction, storage);
+        } else {
+            throw new IllegalArgumentException("Невідома операція: " + transaction.getOperation());
+        }
+    }
+}
