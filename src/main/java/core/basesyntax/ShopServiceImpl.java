@@ -13,6 +13,10 @@ public class ShopServiceImpl implements ShopService {
         this.operationStrategy = operationStrategy;
     }
 
+    public Map<String, Integer> getStorage() {
+        return storage;
+    }
+
     @Override
     public void process(List<FruitTransaction> transactions) {
         for (FruitTransaction transaction : transactions) {
