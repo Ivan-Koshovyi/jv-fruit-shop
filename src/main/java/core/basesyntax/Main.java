@@ -2,6 +2,8 @@ package core.basesyntax;
 
 import core.basesyntax.converter.DataConverter;
 import core.basesyntax.converter.DataConverterImpl;
+import core.basesyntax.file.FileWriter;
+import core.basesyntax.file.FileWriterImpl;
 import core.basesyntax.file.ReadFile;
 import core.basesyntax.file.ReadFileImpl;
 import core.basesyntax.operations.*;
@@ -28,13 +30,11 @@ public class Main {
         ShopService shopService = new ShopServiceImpl(operationStrategy);
         shopService.process(transactions);
 
-        // 5.Generate report based on the current Storage state
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
         String resultingReport = reportGenerator.getReport();
 
-        // 6. Write the received report into the destination file
-//        FileWriter fileWriter = new FileWriterImpl();
-//        fileWriter.write(resultingReport, "finalReport.csv");
+        FileWriter fileWriter = new FileWriterImpl();
+        fileWriter.write(resultingReport, "finalReport.csv");
 
     }
 }
