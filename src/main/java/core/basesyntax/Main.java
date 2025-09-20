@@ -39,8 +39,8 @@ public class Main {
         ShopService shopService = new ShopServiceImpl(operationStrategy);
         Map<String, Integer> finalStorage = shopService.process(transactions);
 
-        ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        String resultingReport = reportGenerator.getReport(finalStorage);
+        ReportGenerator report = new ReportGeneratorImpl();
+        String resultingReport = report.getReport(finalStorage);
 
         FileWriter fileWriter = new FileWriterImpl();
         fileWriter.write(resultingReport, "src/main/resources/finalReport.csv");
