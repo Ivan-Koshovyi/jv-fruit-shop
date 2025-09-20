@@ -1,4 +1,6 @@
-package core.basesyntax;
+package core.basesyntax.service;
+
+import core.basesyntax.operations.OperationStrategy;
 
 import java.util.HashMap;
 import java.util.List;

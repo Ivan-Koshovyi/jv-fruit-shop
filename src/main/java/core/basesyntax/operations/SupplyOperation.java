@@ -1,6 +1,6 @@
 package core.basesyntax.operations;
 
-import core.basesyntax.FruitTransaction;
+import core.basesyntax.service.FruitTransaction;
 
 import java.util.Map;
 
