@@ -1,14 +1,14 @@
 package core.basesyntax.operations;
 
 import core.basesyntax.service.FruitTransaction;
-
 import java.util.Map;
 
 public class OperationStrategyImpl implements OperationStrategy {
 
     private final Map<FruitTransaction.Operation, OperationHandler> operationHandlers;
 
-    public OperationStrategyImpl(Map<FruitTransaction.Operation, OperationHandler> operationHandlers) {
+    public OperationStrategyImpl(Map<FruitTransaction.Operation,
+            OperationHandler> operationHandlers) {
         this.operationHandlers = operationHandlers;
     }
 
@@ -18,7 +18,8 @@ public class OperationStrategyImpl implements OperationStrategy {
         if (handler != null) {
             handler.handle(transaction, storage);
         } else {
-            throw new IllegalArgumentException("Unknown operation " + transaction.getOperation());
+            throw new IllegalArgumentException("Unknown operation "
+                    + transaction.getOperation());
         }
     }
 }

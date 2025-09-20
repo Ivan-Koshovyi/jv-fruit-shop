@@ -6,9 +6,18 @@ import core.basesyntax.file.FileWriter;
 import core.basesyntax.file.FileWriterImpl;
 import core.basesyntax.file.ReadFile;
 import core.basesyntax.file.ReadFileImpl;
-import core.basesyntax.operations.*;
-import core.basesyntax.service.*;
-
+import core.basesyntax.operations.BalanceOperation;
+import core.basesyntax.operations.OperationHandler;
+import core.basesyntax.operations.OperationStrategy;
+import core.basesyntax.operations.OperationStrategyImpl;
+import core.basesyntax.operations.PurchaseOperation;
+import core.basesyntax.operations.ReturnOperation;
+import core.basesyntax.operations.SupplyOperation;
+import core.basesyntax.service.FruitTransaction;
+import core.basesyntax.service.ReportGenerator;
+import core.basesyntax.service.ReportGeneratorImpl;
+import core.basesyntax.service.ShopService;
+import core.basesyntax.service.ShopServiceImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +28,6 @@ public class Main {
         List<String> readFile = reportOfFile.read("reportToRead.csv");
 
         DataConverter dataConverter = new DataConverterImpl();
-        List<FruitTransaction> transactions = dataConverter.convertToTransaction(readFile);
-
         Map<FruitTransaction.Operation, OperationHandler> operationHandlers = new HashMap<>();
         operationHandlers.put(FruitTransaction.Operation.BALANCE, new BalanceOperation());
         operationHandlers.put(FruitTransaction.Operation.PURCHASE, new PurchaseOperation());
@@ -28,6 +35,7 @@ public class Main {
         operationHandlers.put(FruitTransaction.Operation.SUPPLY, new SupplyOperation());
         OperationStrategy operationStrategy = new OperationStrategyImpl(operationHandlers);
 
+        List<FruitTransaction> transactions = dataConverter.convertToTransaction(readFile);
         ShopService shopService = new ShopServiceImpl(operationStrategy);
         shopService.process(transactions);
 

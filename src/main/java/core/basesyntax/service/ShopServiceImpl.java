@@ -1,7 +1,6 @@
 package core.basesyntax.service;
 
 import core.basesyntax.operations.OperationStrategy;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
