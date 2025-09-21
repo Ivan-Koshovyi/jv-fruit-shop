@@ -7,7 +7,7 @@ import java.util.Map;
 public class SupplyOperation implements OperationHandler {
     @Override
     public void handle(FruitTransaction transaction, Map<String, Integer> storage) {
-        if (storage.getOrDefault(transaction.getFruit(), 0) - transaction.getQuantity() < 0) {
+        if (transaction.getQuantity() < 0) {
             throw new IllegalArgumentException("Supply quantity cannot be negative: "
                     + transaction.getQuantity());
         }

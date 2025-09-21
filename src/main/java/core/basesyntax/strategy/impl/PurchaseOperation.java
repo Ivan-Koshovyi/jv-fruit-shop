@@ -8,8 +8,8 @@ public class PurchaseOperation implements OperationHandler {
     @Override
     public void handle(FruitTransaction transaction, Map<String, Integer> storage) {
         if (storage.getOrDefault(transaction.getFruit(), 0) - transaction.getQuantity() < 0) {
-            throw new IllegalArgumentException("Purchase quantity cannot be negative: "
-                    + transaction.getQuantity());
+            throw new IllegalArgumentException("Cannot complete purchase. Not enough "
+                    + transaction.getFruit() + " in stock.");
         }
         storage.put(transaction.getFruit(), storage
                 .getOrDefault(transaction.getFruit(), 0) - transaction.getQuantity());

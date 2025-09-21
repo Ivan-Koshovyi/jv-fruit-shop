@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ShopServiceImpl implements ShopService {
-    private Map<String, Integer> storage = new HashMap<>();
     private OperationStrategy operationStrategy;
 
     public ShopServiceImpl(OperationStrategy operationStrategy) {
@@ -17,6 +16,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Map<String, Integer> process(List<FruitTransaction> transactions) {
+        Map<String, Integer> storage = new HashMap<>();
         for (FruitTransaction transaction : transactions) {
             operationStrategy.apply(transaction, storage);
         }

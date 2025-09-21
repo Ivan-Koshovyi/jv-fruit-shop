@@ -17,9 +17,6 @@ public class DataConverterImpl implements DataConverter {
             String fruit = reportSplit[1];
             int quantity = Integer.parseInt(reportSplit[2]);
             FruitTransaction.Operation operationCode = FruitTransaction.Operation.getByCode(code);
-            if (operationCode != null) {
-                throw new IllegalArgumentException("The operationCode is invalid.");
-            }
             FruitTransaction fruitTransaction
                     = new FruitTransaction(operationCode, fruit, quantity);
             transactions.add(fruitTransaction);
