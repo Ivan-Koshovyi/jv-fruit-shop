@@ -6,6 +6,7 @@ import java.util.Map;
 public class ReportGeneratorImpl implements ReportGenerator {
     private static final String INFO_REPORT = "fruit, quantity";
     private static final String COMA = ",";
+
     @Override
     public String getReport(Map<String, Integer> fruitData) {
         StringBuilder reportBuilder = new StringBuilder();

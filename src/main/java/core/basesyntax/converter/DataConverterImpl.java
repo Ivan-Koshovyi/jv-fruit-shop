@@ -10,6 +10,7 @@ public class DataConverterImpl implements DataConverter {
     private static final int TYPE_SERVICE = 0;
     private static final int FRUIT = 1;
     private static final int COUNT_OF_FRUIT = 2;
+
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> readFile) {
         List<FruitTransaction> transactions = new ArrayList<>();
@@ -17,8 +18,8 @@ public class DataConverterImpl implements DataConverter {
             String[] reportSplit = report.split(COMA);
             if (reportSplit.length != 3) {
                 throw new RuntimeException(
-                        "Invalid array: expected 3 elements, but got " + reportSplit.length +
-                                ". Array contents: " + Arrays.toString(reportSplit)
+                        "Invalid array: expected 3 elements, but got " + reportSplit.length
+                                + ". Array contents: " + Arrays.toString(reportSplit)
                 );
             }
             String code = reportSplit[TYPE_SERVICE];

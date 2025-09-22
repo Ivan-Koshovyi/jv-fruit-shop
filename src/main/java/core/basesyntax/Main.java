@@ -43,7 +43,7 @@ public class Main {
         Map<String, Integer> finalStorage = shopService.process(transactions);
 
         ReportGenerator report = new ReportGeneratorImpl();
-        String resultingReport = report.getReport(finalStorage) ;
+        String resultingReport = report.getReport(finalStorage);
 
         FileWriter fileWriter = new FileWriterImpl();
         fileWriter.write(resultingReport, REPORT_FILE);
