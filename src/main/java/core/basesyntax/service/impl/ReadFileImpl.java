@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ReadFileImpl implements ReadFile {
     @Override
@@ -18,7 +17,7 @@ public class ReadFileImpl implements ReadFile {
             return new BufferedReader(new InputStreamReader(inputStream))
                     .lines()
                     .skip(1)
-                    .collect(Collectors.toList());
+                    .toList();
         } catch (IOException e) {
             throw new RuntimeException("Can`t read file " + fileName, e);
         }
