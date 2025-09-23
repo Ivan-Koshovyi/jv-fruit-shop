@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataConverterImpl implements DataConverter {
-    private static final String COMA = ",";
+    private static final String COMMA = ",";
     private static final int TYPE_SERVICE = 0;
     private static final int FRUIT = 1;
     private static final int COUNT_OF_FRUIT = 2;
@@ -15,7 +15,7 @@ public class DataConverterImpl implements DataConverter {
     public List<FruitTransaction> convertToTransaction(List<String> readFile) {
         List<FruitTransaction> transactions = new ArrayList<>();
         for (String report : readFile) {
-            String[] reportSplit = report.split(COMA);
+            String[] reportSplit = report.split(COMMA);
             if (reportSplit.length != 3) {
                 throw new RuntimeException(
                         "Invalid array: expected 3 elements, but got " + reportSplit.length

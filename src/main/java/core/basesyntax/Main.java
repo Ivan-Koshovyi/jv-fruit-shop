@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    private static final String DATA_FILE = "reportToRead.csv";
+    private static final String DATA_FILE = "src/main/resources/reportToRead.csv";
     private static final String REPORT_FILE = "src/main/resources/finalReport.csv";
 
     public static void main(String[] args) {
